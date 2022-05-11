@@ -10,25 +10,38 @@
   </head>
   <body>
     <script>
-    function display (self){
+    function change(value){
+      document.getElementById('btnDisplayModelabel').innerHTML=value!='N'?"Dark Mode":"Light Mode";
+      document.getElementById('btnDisplayMode').checked=value!='N'?true:false;
+      document.querySelector('body').style.backgroundColor =value!='N'?'black':'white'
+      document.querySelector('body').style.color =value!='N'?'white':'black'
+    }
+
+    window.addEventListener('load',function(){
+      change(localStorage.getItem("dark"));
+
+    })  
+
+    function display(){
       var body = document.querySelector('body');
-      var btn = document.getElementById('btnDisplayMode');
-      if(self.value ==='다크모드로 전환'){
+      var checkbox = document.getElementById('btnDisplayMode');
+      if(checkbox.checked){
+        localStorage.setItem("dark",'Y')
+        change(localStorage.getItem('dark'));
         body.style.backgroundColor = 'black';
         body.style.color = 'white';
-        btn.style.backgroundColor="yellow";
-        btn.style.color = "black";
-        self.value = '라이트모드로 전환';
       } else {
-          body.style.backgroundColor = 'white';
-          body.style.color = 'black';
-          btn.style.backgroundColor="black";
-          btn.style.color = "white";
-          self.value = '다크모드로 전환';//테스트
+        localStorage.setItem("dark",'N')
+        change(localStorage.getItem('dark'));
+        body.style.backgroundColor = 'white';
+        body.style.color = 'black';
+      }
     }
-  }
     </script>
+    <input id="btnDisplayMode" class="form-check-input" type ="checkbox" onclick=display()>
+    <label id="btnDisplayModelabel" for="btnDisplayMode" class="form-check-label" >DarkMode</label>
     <div class="container">
+      
       <div class="profile-wrap">
         <div class="profile">
           {% if user and user.id %}
@@ -57,7 +70,7 @@
             <a id="join" href="/join" class="btn">회원가입</a>
             <button id="login" type="submit" class="btn">로그인</button>
             <a id="kakao" href="/auth/kakao" class="btn">카카오톡</a>
-            <input id="btnDisplayMode" class="btn" type ="button" value="다크모드로 전환" onclick="display(this);">
+            
           </form>
         {% endif %}
         </div>
