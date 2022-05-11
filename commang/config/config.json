@@ -1,9 +1,9 @@
 {
   "development": {
     "username": "root",
-    "password": "1234",
+    "password": "paul2858",
     "database": "prj-maindb",
-    "host": "127.0.0.1",
+    "host": "3.38.179.58",
     "dialect": "mysql"
   },
   "test": {
