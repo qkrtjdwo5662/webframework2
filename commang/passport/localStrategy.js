@@ -12,7 +12,7 @@ module.exports = () => {
     try {
       const exUser = await User.findOne({ where: { email } });
       if (exUser) {
-        const result = await bcrypt.compare(password, exUser.password);
+        const result = await bcrypt.compare(password, exUser.password);//로그인(비밀번호 검증)
         if (result) {
           done(null, exUser);
         } else {

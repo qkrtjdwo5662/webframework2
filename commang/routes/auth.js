@@ -11,13 +11,13 @@ router.post('/join', isNotLoggedIn, async (req, res, next) => {
   try {
     const exUser = await User.findOne({ where: { email } });
     if (exUser) {
-      return res.redirect('/join?error=exist');
+      return res.redirect('/join?error=exist');//이메일이 이미 존재 할때 
     }
     const hash = await bcrypt.hash(password, 12);
     await User.create({
       email,
       nick,
-      password: hash,
+      password: hash, //db에 insert
     });
     return res.redirect('/');
   } catch (error) {
@@ -54,6 +54,14 @@ router.get('/logout', isLoggedIn, (req, res) => {
 router.get('/kakao', passport.authenticate('kakao'));
 
 router.get('/kakao/callback', passport.authenticate('kakao', {
+  failureRedirect: '/',
+}), (req, res) => {
+  res.redirect('/');
+});
+
+router.get('/naver', passport.authenticate('naver',{authType:'reprompt'}));
+
+router.get('/naver/callback', passport.authenticate('naver', {
   failureRedirect: '/',
 }), (req, res) => {
   res.redirect('/');

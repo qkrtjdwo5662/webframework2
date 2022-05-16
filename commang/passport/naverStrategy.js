@@ -1,25 +1,26 @@
 const passport = require('passport');
-const KakaoStrategy = require('passport-kakao').Strategy;
+const { Strategy: NaverStrategy, Profile: NaverProfile } = require('passport-naver-v2');
 const User = require('../models/user');
 
 module.exports = () => {
-  passport.use(new KakaoStrategy({
-    clientID: process.env.KAKAO_ID,
-    callbackURL: '/auth/kakao/callback',
+  passport.use(new NaverStrategy({
+    clientID: process.env.NAVER_ID,
+    clientSecret: process.env.NAVER_SECRET,
+    callbackURL: '/auth/naver/callback',
   }, async (accessToken, refreshToken, profile, done) => {
-    console.log('kakao profile', profile);
+    console.log('naver profile', profile);
     try {
       const exUser = await User.findOne({
-        where: { snsId: profile.id, provider: 'kakao' },
+        where: { snsId: profile.id, provider: 'naver' },
       });
       if (exUser) {
         done(null, exUser);
       } else {
         const newUser = await User.create({
-          email: profile._json && profile._json.kakao_account_email,
-          nick: profile.displayName,
+          email: profile.email,
+          nick: profile.name,
           snsId: profile.id,
-          provider: 'kakao',
+          provider: 'naver',
         });
         done(null, newUser);
       }
