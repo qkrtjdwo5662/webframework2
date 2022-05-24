@@ -60,26 +60,20 @@ router.post('/', isLoggedIn, upload2.none(), async (req, res, next) => {
   }
 });
 
-router.post('/:id/like', async (req, res, next) => {
-    try {
-        const user = await User.findOne({ where: { id: req.user.id } });
-      await user.addLike(req.params.id);
-      res.redirect('/');
-    }  catch (error) {
+router.post('/:id/delete',isLoggedIn,async(req,res,next)=>{
+  try{
+    const postId = req.params.id;
+    await Post.destroy({
+      where:{id:postId}
+    })
+    res.send("게시물 삭제 완료");
+  }
+  catch(error){
     console.error(error);
     next(error);
-    }
+  }
 });
 
-router.delete('/:id/unlike', async (req, res, next) => {
-    try {
-        const user = await User.findOne({ where: { id: req.user.id } });
-      await user.removeLike(req.params.id);
-      res.redirect('/');
-    }  catch (error) {
-    console.error(error);
-    next(error);
-    }
-});
+
 
 module.exports = router;
