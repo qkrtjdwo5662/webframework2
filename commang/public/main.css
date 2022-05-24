@@ -41,14 +41,14 @@ svg {
 .sun {    width: 24px;
            position: fixed; /* 밝을 때 보이며, 고정 위치값을 지정합니다. */
            top: 20px !important;
-           left: 20px; 
+           right: 20px; 
 }
 .dark .moon {
   opacity: 1;
   width: 24px;
   position: fixed; /* 어두울 때 보이며, 고정 위치값을 지정합니다. */
   top: 20px !important;
-  left: 20px;
+  right: 20px;
 }
 
 .dark .sun { opacity: 0; width: 0; /* 어두울 땐 보이지 않습니다. */}
@@ -193,3 +193,5 @@ header {
   list-style: none;
   margin: 0;
   }
+
+  
