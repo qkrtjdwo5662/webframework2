@@ -38,13 +38,10 @@
               <button class="twit-follow">팔로우하기</button>
             {% endif %}
             <div class="twit-content">{{twit.content}}</div>
-            {% if twit.img %}
+              {% if twit.img %}
               <div class="twit-img"><img src="{{twit.img}}" alt="섬네일"></div>
-            {% endif %}
-            {% if not likerldList.includes(User.id) and twit.User.id !== user.id %}
-            <button class="like">좋아요</button>
-            {% else %}
-            <button class="unlike">좋아요취소</button>
+              {% endif %}
+              
             <div value="comment" >
               <div value="acomment">
                 {%for comment in comments%}
@@ -61,11 +58,12 @@
                   <button id="comment-btn" type="submit" class="btncomment">게시</button>
                 </form>
               </div>
+
             </div>
-            </div>
-        {% endfor %}
-      </div>
-    </div>
+          </div>
+      {% endfor %}   
+     </div>
+
 {% endblock %}
 
 {% block script %}

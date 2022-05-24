@@ -34,7 +34,7 @@ router.get('/', async (req, res, next) => {
       order: [['createdAt', 'DESC']]
     });
     res.render('main', {
-      title: 'cex',
+      title: 'commang',
       twits: posts,
       comments:comments,
     });
