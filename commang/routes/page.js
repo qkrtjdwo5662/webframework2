@@ -34,7 +34,7 @@ router.get('/', async (req, res, next) => {
       order: [['createdAt', 'DESC']]
     });
     res.render('main', {
-      title: 'prj-name',
+      title: 'cex',
       twits: posts,
       comments:comments,
     });
@@ -44,21 +44,7 @@ router.get('/', async (req, res, next) => {
   }
 });
 
-router.get("/comment", async (req, res, next) =>{
-  try{
-    const comments = await Comment.findAll({
-      order: [['createdAt', 'DESC']]
-    });
 
-    res.render('main', {
-      title: 'NodeBird',
-      comments:comments,
-    })
-  }catch(err){
-      console.error(err);
-      next(err);
-  }
-});
 
 router.get('/hashtag', async (req, res, next) => {
   const query = req.query.hashtag;
