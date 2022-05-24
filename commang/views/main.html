@@ -203,17 +203,19 @@
     });
 
     document.querySelectorAll('.twit-delete').forEach(function(tag) {
-      console.log(tag);
       tag.addEventListener('click', function() {
-        if(confirm('게시물을 삭제하시겠습니까?')){
-          const twitId = document.querySelector('.twit-id').value;
-          axios.post(`/post/${twitId}/delete`)
-          .then((res)=>{
-            location.reload();
-          })
-          .catch((err)=>{
-            console.error(err);
-          })
+        const isLoggedIn = document.querySelector('#my-id');
+        if (isLoggedIn) {
+          const postId = tag.parentNode.querySelector('.twit-id').value;
+          if(confirm('게시물을 삭제하시겠습니까?')){
+             axios.post(`/post/${postId}/delete`)
+              .then((res)=>{
+                 location.reload();
+              })
+              .catch((err)=>{
+                console.error(err);
+              });
+          }
         }
       });
     });
