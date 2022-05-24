@@ -41,7 +41,24 @@
             {% if twit.img %}
               <div class="twit-img"><img src="{{twit.img}}" alt="섬네일"></div>
             {% endif %}
-          </div>
+            <div value="comment" >
+              <div value="acomment">
+                {%for comment in comments%}
+                {% if comment.PostId == twit.id%}
+                <div class="">{{twit.User.nick}}: {{comment.content}}</div>
+                {% endif %}
+                {% endfor %}
+              </div>
+      
+              <div class="blcomment">
+                <form id="comment-form" action="/comment/{{twit.id}}" method="post" >
+                  <textarea id ="comment-text"name="content" maxlength="140"></textarea>
+                  <input type="hidden" value="{{twit.User.id}}" name = "userId">
+                  <button id="comment-btn" type="submit" class="btncomment">게시</button>
+                </form>
+              </div>
+            </div>
+            </div>
         {% endfor %}
       </div>
     </div>

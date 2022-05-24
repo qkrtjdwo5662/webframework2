@@ -1,6 +1,6 @@
 const express = require('express');
 const { isLoggedIn, isNotLoggedIn } = require('./middlewares');
-const { Post, User, Hashtag } = require('../models');
+const { Post, User, Hashtag, Comment } = require('../models');
 
 const router = express.Router();
 
@@ -29,13 +29,34 @@ router.get('/', async (req, res, next) => {
       },
       order: [['createdAt', 'DESC']],
     });
+
+    const comments = await Comment.findAll({
+      order: [['createdAt', 'DESC']]
+    });
     res.render('main', {
       title: 'prj-name',
       twits: posts,
+      comments:comments,
     });
   } catch (err) {
     console.error(err);
     next(err);
+  }
+});
+
+router.get("/comment", async (req, res, next) =>{
+  try{
+    const comments = await Comment.findAll({
+      order: [['createdAt', 'DESC']]
+    });
+
+    res.render('main', {
+      title: 'NodeBird',
+      comments:comments,
+    })
+  }catch(err){
+      console.error(err);
+      next(err);
   }
 });
 
@@ -60,7 +81,35 @@ router.get('/hashtag', async (req, res, next) => {
     return next(error);
   }
 });
-//
+
+router.post("/comment/:id", isLoggedIn, async (req, res, next) =>{
+
+  console.log(req.body);
+
+  try{
+    const post = await Post.findOne({
+      where : {id : req.params.id}
+    });
+
+    if (post){
+      const comment = await Comment.create({
+        content: req.body.content,
+        commenter: req.user.id,
+        postId : req.params.postId,
+        UserId : req.body.userId
+
+      });
+    
+      await post.addComment(comment);
+    }
+    res.redirect("/");
+  } catch(error){
+    console.error(error);
+    next(error);
+  }
+});
+
+
 module.exports = router;
 
 
