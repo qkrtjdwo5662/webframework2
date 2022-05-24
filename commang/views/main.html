@@ -7,7 +7,7 @@
 {% block content %}
     <div class="timeline">
       {% if user %}
-        <br><div>
+        <div>
           <form id="twit-form" action="/post" method="post" enctype="multipart/form-data">
             <div class="input-group">
               <textarea id="twit" name="content" maxlength="140"></textarea>
@@ -24,14 +24,14 @@
           </form>
         </div><br>
         <form>
-          <div class="radio-group">
-         <input type="radio" id="option-one" name="selector">
-         <label for="option-one">최신</label>
-         <input type="radio" id="option-two" name="selector">
-         <label for="option-two">인기</label>
-         <input type="radio" id="option-three" name="selector">
-         <label for="option-three">팔로잉</label>
-           </div>
+          <div class="radio-group" style="background-color: rgb(116, 124, 156); text-align: center; color: cornsilk;">
+            <input type="radio" id="option-one" name="selector">
+              <label for="option-one">최신</label>
+            <input type="radio" id="option-two" name="selector">
+              <label for="option-two">인기</label>
+            <input type="radio" id="option-three" name="selector">
+              <label for="option-three">팔로잉</label>
+          </div>
             </form><br>
 
       {% endif %}
@@ -41,7 +41,7 @@
           <button class="btn">검색</button>
         </form><br>
         {% for twit in twits %}
-          <div class="twit">
+          <div class="twit" style="background-color: rgb(238, 234, 234);">
             <input type="hidden" value="{{twit.User.id}}" class="twit-user-id">
             <input type="hidden" value="{{twit.id}}" class="twit-id">
             <div class="twit-author">{{twit.User.nick}}</div>
@@ -70,7 +70,7 @@
                 <form id="comment-form" action="/comment/{{twit.id}}" method="post" >
                   <textarea id ="comment-text"name="content" maxlength="140"></textarea>
                   <input type="hidden" value="{{twit.User.id}}" name = "userId">
-                  <button id="comment-btn" type="submit" class="btncomment">게시</button>
+                  <button id="comment-btn" type="submit" class="btncomment">입력</button>
                 </form>
               </div>
 
