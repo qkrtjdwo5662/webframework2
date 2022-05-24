@@ -3,8 +3,12 @@ const Sequelize = require('sequelize');
 module.exports = class Comment extends Sequelize.Model {
   static init(sequelize) {
     return super.init({
-      content: {
+      comment: {
         type: Sequelize.STRING(140),
+        allowNull: true,
+      },
+      commenter:{
+        type: Sequelize.STRING(15),
         allowNull: true,
       },
     }, {

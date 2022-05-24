@@ -57,7 +57,7 @@
               <div value="acomment">
                 {%for comment in comments%}
                 {% if comment.PostId == twit.id%}
-                <div class="">{{twit.User.nick}}: {{comment.content}}</div>
+                <div class="">{{comment.commenter}}: {{comment.comment}}</div>
                 {% endif %}
                 {% endfor %}
               </div>

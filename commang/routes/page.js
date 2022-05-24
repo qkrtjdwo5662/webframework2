@@ -79,8 +79,8 @@ router.post("/comment/:id", isLoggedIn, async (req, res, next) =>{
 
     if (post){
       const comment = await Comment.create({
-        content: req.body.content,
-        commenter: req.user.id,
+        comment: req.body.content,
+        commenter: req.user.nick,
         postId : req.params.postId,
         UserId : req.body.userId
 

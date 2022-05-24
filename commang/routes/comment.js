@@ -14,7 +14,7 @@ router.post('/', isLoggedIn, async (req, res, next) => {
   try {
     console.log(req.user);
     const post = await Post.create({
-      content: req.body.content,
+      comment: req.body.content,
       commenter: req.user.id,
       PostId:req.Post.id,
       UserId:req.user.id,
