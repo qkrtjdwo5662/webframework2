@@ -7,7 +7,7 @@
 {% block content %}
     <div class="timeline">
       {% if user %}
-        <div>
+        <br><div>
           <form id="twit-form" action="/post" method="post" enctype="multipart/form-data">
             <div class="input-group">
               <textarea id="twit" name="content" maxlength="140"></textarea>
@@ -23,6 +23,17 @@
             </div>
           </form>
         </div><br>
+        <form>
+          <div class="radio-group">
+         <input type="radio" id="option-one" name="selector">
+         <label for="option-one">최신</label>
+         <input type="radio" id="option-two" name="selector">
+         <label for="option-two">인기</label>
+         <input type="radio" id="option-three" name="selector">
+         <label for="option-three">팔로잉</label>
+           </div>
+            </form><br>
+
       {% endif %}
       <div class="twits">
         <form id="hashtag-form" action="/hashtag">

@@ -13,7 +13,7 @@
     function change(value){
       document.getElementById('btnDisplayModelabel').innerHTML=value!='N'?"Dark Mode":"Light Mode";
       document.getElementById('btnDisplayMode').checked=value!='N'?true:false;
-      document.querySelector('body').style.backgroundColor =value!='N'?'black':'white'
+      document.querySelector('body').style.backgroundColor =value!='N'?'rgb(68, 67, 75)':'white'
       document.querySelector('body').style.color =value!='N'?'white':'black'
     }
 
@@ -28,7 +28,7 @@
       if(checkbox.checked){
         localStorage.setItem("dark",'Y')
         change(localStorage.getItem('dark'));
-        body.style.backgroundColor = 'black';
+        body.style.backgroundColor = 'rgb(68, 67, 75)';
         body.style.color = 'white';
       } else {
         localStorage.setItem("dark",'N')
@@ -42,6 +42,10 @@
     <label id="btnDisplayModelabel" for="btnDisplayMode" class="form-check-label" >DarkMode</label>
     <div class="container">
       
+      <div style="text-align: center;">
+        <img src = "/logo.jpg", width = 300, alt = "logo" >
+      </div>
+
       <div class="profile-wrap">
         <div class="profile">
           {% if user and user.id %}
