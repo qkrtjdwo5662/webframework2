@@ -7,7 +7,6 @@
 {% block content %}
     <div class="timeline">
       {% if user %}
-        <br>
         <div>
           <form id="twit-form" action="/post" method="post" enctype="multipart/form-data">
             <div class="input-group">
@@ -67,7 +66,7 @@
                 <form id="comment-form" action="/comment/{{twit.id}}" method="post" >
                   <textarea id ="comment-text"name="content" maxlength="140"></textarea>
                   <input type="hidden" value="{{twit.User.id}}" name = "userId">
-                  <button id="comment-btn" type="submit" class="btncomment">게시</button>
+                  <button id="comment-btn" type="submit" class="btncomment">입력</button>
                 </form>
               </div>
 
