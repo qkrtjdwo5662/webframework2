@@ -170,6 +170,15 @@ input[type='text'], input[type='email'], input[type='password'], textarea {
   font-size: 12px;
   cursor: pointer;
 }
+.twit-unfollow {
+  padding: 1px 5px;
+  background: #fff;
+  border: 1px solid silver;
+  border-radius: 5px;
+  color: rgb(15, 0, 218);
+  font-size: 12px;
+  cursor: pointer;
+}
 .twit-img { text-align: center; }
 .twit-img img { max-width: 75%; }
 .error-message { color: red; font-weight: bold; }
@@ -252,8 +261,18 @@ header {
     font-size: 17px;
   }
 
-  #comment-btn{
+  #post-delete-btn {
     float: right;
+    color: rgb(252, 252, 252);
+    background: rgb(87, 77, 77);
+    border-radius: 4px;
+    height: 35px;
+    width: auto;
+    padding: 0 10px;
+    cursor: pointer;
+  }
+
+  #comment-btn{
     color: black;
     background: white;
     border: 1px solid grey;
@@ -263,8 +282,8 @@ header {
     padding: 0 10px;
     cursor: pointer;
   }
-  
-  #comment-text { width: 300px; }
+
+  #comment-text { width: 400px; }
 
   .twit-like{
     cursor: pointer;

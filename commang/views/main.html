@@ -46,15 +46,17 @@
             <input type="hidden" value="{{twit.User.id}}" class="twit-user-id">
             <input type="hidden" value="{{twit.id}}" class="twit-id">
             <div class="twit-author">{{twit.User.nick}}</div>
+
             {% if not followerIdList.includes(twit.User.id) and twit.User.id !== user.id %}
             <button class="twit-follow">팔로우하기</button>
             {% else %}
-            <button class="twit-unfollow">팔로잉끊기</button>
+            <button class="twit-unfollow">팔로우끊기</button>
             {% endif %}
+
             <div class="twit-content">{{twit.content}}</div>
               {% if twit.img %}
               <div class="twit-img"><img src="{{twit.img}}" alt="섬네일"></div>
-              {% endif %}
+              {% endif %}<br>
             {% if not likerIdList.includes(twit.id) %}
             <button class="twit-like">
               <img src="/heart.png" width="10">
@@ -74,17 +76,18 @@
                 {% endif %}
                 {% endfor %}
               </div>
-      
+
+              {% if twit.User.id === user.id %}
+              <button class = "twit-delete btn" id="post-delete-btn">게시글 삭제</button>
+              <input type = "hidden" value="{{twit.id}}" class ="twit-id">
+              {% endif %}
+
+              <br>
               <div class="blcomment">
                 <form id="comment-form" action="/comment/{{twit.id}}" method="post" >
                   <textarea id ="comment-text"name="content" maxlength="140"></textarea>
                   <input type="hidden" value="{{twit.User.id}}" name = "userId">
                   <button id="comment-btn" type="submit" class="btncomment">입력</button>
-            {% if twit.User.id === user.id %}
-  
-                  <button class = "twit-delete btn">게시글 삭제</button>
-                  <input type = "hidden" value="{{twit.id}}" class ="twit-id">
-            {% endif %}
                 </form>
               </div>
 
