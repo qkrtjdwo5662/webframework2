@@ -9,37 +9,54 @@
     <link rel="stylesheet" href="/main.css">
   </head>
   <body>
-    <script>
-    function change(value){
-      document.getElementById('btnDisplayModelabel').innerHTML=value!='N'?"Dark Mode":"Light Mode";
-      document.getElementById('btnDisplayMode').checked=value!='N'?true:false;
-      document.querySelector('body').style.backgroundColor =value!='N'?'rgb(68, 67, 75)':'white'
-      document.querySelector('body').style.color =value!='N'?'white':'black'
-    }
+    
+    <button class="switch" onclick="toggleTheme()">
+      <svg class="sun" fill="none" stroke="#fbb046" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="feather feather-sun" viewBox="0 0 24 24"><defs/><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+      <svg class="moon" fill="none" stroke="#514e85" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="feather feather-moon" viewBox="0 0 24 24"><defs/><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+    </button>
 
-    window.addEventListener('load',function(){
-      change(localStorage.getItem("dark"));
-
-    })  
-
-    function display(){
-      var body = document.querySelector('body');
-      var checkbox = document.getElementById('btnDisplayMode');
-      if(checkbox.checked){
-        localStorage.setItem("dark",'Y')
-        change(localStorage.getItem('dark'));
-        body.style.backgroundColor = 'rgb(68, 67, 75)';
-        body.style.color = 'white';
-      } else {
-        localStorage.setItem("dark",'N')
-        change(localStorage.getItem('dark'));
-        body.style.backgroundColor = 'white';
-        body.style.color = 'black';
-      }
-    }
+    <script src="//code.jquery.com/jquery-3.3.1.min.js">
+    
     </script>
-    <input id="btnDisplayMode" class="form-check-input" type ="checkbox" onclick=display()>
-    <label id="btnDisplayModelabel" for="btnDisplayMode" class="form-check-label" >DarkMode</label>
+  <script>
+    $(document).ready(function(){
+  $('a').click(function(){
+    $('a').removeClass("active");
+    $(this).addClass("active");
+  });
+  $('button').click(function(){
+    $('body').toggleClass('dark');
+  });
+});
+  </script>
+
+  <script>
+    function setTheme(themeName) {
+            localStorage.setItem('theme', themeName);
+            document.documentElement.className = themeName;
+        }
+
+        // 라이트 모드와 다크 모드 사이의 토글 세션(로컬 스토리지)
+        function toggleTheme() {
+            if (localStorage.getItem('theme') === 'theme-dark') {
+                setTheme('theme-light');
+            } else {
+                setTheme('theme-dark');
+            }
+        }
+
+        // 초기 로드 시 테마를 설정하는 즉시 호출되는 기능
+        (function () {
+            if (localStorage.getItem('theme') === 'theme-dark') {
+                setTheme('theme-dark');
+            } else {
+                setTheme('theme-light');
+            }
+        })();
+  </script>
+  
+    
+    
     <div class="container">
       
       <div style="text-align: center;">

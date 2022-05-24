@@ -1,5 +1,58 @@
 * { box-sizing: border-box; }
 html, body { margin: 0; padding: 0; height: 100%; }
+
+.twit-follow-cancle{
+  padding: 1px 5px;
+  background: #fff;
+  border: 1px solid silver;
+  border-radius: 5px;
+  color: crimson;
+  font-size: 12px;
+  cursor: pointer;
+
+}
+.theme-light {
+
+  background-color: white;
+  
+}
+.theme-dark {
+  
+  background-color: rgb(68, 67, 75);
+ 
+}
+.switch {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background-color: transparent;
+  border: none;
+  color: #ddd;
+  outline: none;
+  cursor: pointer;
+} 
+svg {
+  width:0;
+  height: 24px;
+  transition: all .3s ease-in;
+  transform-origin: center;
+}
+.moon { opacity: 0; width: 0;} /* 밝을 땐 보이지 않습니다. */
+.sun {    width: 24px;
+           position: fixed; /* 밝을 때 보이며, 고정 위치값을 지정합니다. */
+           top: 20px !important;
+           left: 20px; 
+}
+.dark .moon {
+  opacity: 1;
+  width: 24px;
+  position: fixed; /* 어두울 때 보이며, 고정 위치값을 지정합니다. */
+  top: 20px !important;
+  left: 20px;
+}
+
+.dark .sun { opacity: 0; width: 0; /* 어두울 땐 보이지 않습니다. */}
+
 .btn {
   display: inline-block;
   padding: 0 5px;
