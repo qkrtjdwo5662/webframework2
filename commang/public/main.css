@@ -265,3 +265,10 @@ header {
   }
   
   #comment-text { width: 300px; }
+
+  .twit-like{
+    cursor: pointer;
+  }
+  .twit-unlike{
+    cursor: pointer;
+  }

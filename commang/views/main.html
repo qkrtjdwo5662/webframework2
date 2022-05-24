@@ -52,11 +52,18 @@
               {% if twit.img %}
               <div class="twit-img"><img src="{{twit.img}}" alt="섬네일"></div>
               {% endif %}
+              <br>
             {% if not likerIdList.includes(twit.id) and twit.User.id !== user.id %}
-            <button class="twit-like">좋아요</button>
+            <button class="twit-like">
+              <img src="/heart.png" width="10">
+              좋아요
+            </button>
             {% else %}
-            <button class="twit-unlike">좋아요취소</button>
-            {% endif %}
+            <button class="twit-unlike">
+              <img src="/black_heart.png" width="10">
+              좋아요취소
+            </button>
+            {% endif %}<br><br>
             <div value="comment" >
               <div value="acomment">
                 {%for comment in comments%}
