@@ -1,4 +1,4 @@
-* { box-sizing: border-box; }
+* { box-sizing: content-box; }
 html, body { margin: 0; padding: 0; height: 100%; }
 
 .twit-follow-cancle{
@@ -126,7 +126,7 @@ input[type='text'], input[type='email'], input[type='password'], textarea {
   color:black;
   border: black;
 }
-@media screen and (min-width: 800px) { .timeline { width: 500px; } }
+@media screen and (min-width: 800px) { .timeline { width: 700px; } }
 #twit-form {
   border-bottom: 1px solid silver;
   padding: 10px;
