@@ -287,7 +287,15 @@ header {
 
   .twit-like{
     cursor: pointer;
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 4px;
+    padding: 0 5px;
   }
   .twit-unlike{
     cursor: pointer;
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 4px;
+    padding: 0 5px;
   }
