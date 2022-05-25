@@ -53,6 +53,11 @@
             <button class="twit-unfollow">팔로우끊기</button>
             {% endif %}
 
+            {% if twit.User.id === user.id %}
+            <button class = "twit-delete btn" id="post-delete-btn">게시글 삭제</button>
+            <input type = "hidden" value="{{twit.id}}" class ="twit-id">
+            {% endif %}
+
             <div class="twit-content">{{twit.content}}</div>
               {% if twit.img %}
               <div class="twit-img"><img src="{{twit.img}}" alt="섬네일"></div>
@@ -76,11 +81,6 @@
                 {% endif %}
                 {% endfor %}
               </div>
-
-              {% if twit.User.id === user.id %}
-              <button class = "twit-delete btn" id="post-delete-btn">게시글 삭제</button>
-              <input type = "hidden" value="{{twit.id}}" class ="twit-id">
-              {% endif %}
 
               <br>
               <div class="blcomment">
