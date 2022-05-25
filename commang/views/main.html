@@ -24,16 +24,6 @@
             </div>
           </form>
         </div><br>
-        <form>
-          <div class="radio-group" style="background-color: rgb(116, 124, 156); text-align: center; color: cornsilk;">
-            <input type="radio" id="option-one" name="selector">
-              <label for="option-one">최신</label>
-            <input type="radio" id="option-two" name="selector">
-              <label for="option-two">인기</label>
-            <input type="radio" id="option-three" name="selector">
-              <label for="option-three">팔로잉</label>
-          </div>
-            </form><br>
 
       {% endif %}
       <div class="twits">
@@ -72,7 +62,7 @@
               <img src="/heart.png" width="10">
               좋아요
             </button>
-            {% endif %}<br><br>
+            {% endif %}<br><br><hr><br>
             <div value="comment" >
               <div value="acomment">
                 {%for comment in comments%}
